@@ -1,0 +1,590 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Test your JavaScript, CSS, HTML or CoffeeScript online with JSFiddle code editor." />
+    <meta name="keywords" content="online javascript editor, testing javascript online, online ide, online code editor, html, css, coffeescript, scss online editor" />
+    
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+	<script type="text/javascript" src="http://momentjs.com/downloads/moment.js"></script>	
+    
+	<link rel="icon" href="/favicon.png" />
+<style type="text/css">
+    body{font-family:Verdana;}
+
+	table{display:none}
+
+    #display{font-size:smaller}
+
+	.ui-dialog.my-dialog .ui-dialog-contain { margin-top: 0 }
+	
+	
+</style>
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+	<link href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" rel="stylesheet">
+	<link href="../themes/allc.min.css" rel="stylesheet">
+	<link href="../themes/jquery.mobile.icons.min.css" rel="stylesheet">
+    <script type='text/javascript'>      
+	
+	var t;var min = 15;
+	var applicant_id=0;
+	var payment_data='';
+	var updateflag = false;
+	
+$(document).ready(function() {
+	$("#fileupload").change(function(){readImage( this );});
+});
+			
+var getlist = function(){
+//if ($.jStorage.get("in")===false){window.location.href = 'login.html';};
+		//p=$.jStorage.get("key");
+		
+		//$( "#dApplicants" ).empty().append('<li data-role="list-divider">Applicant List</li>');
+		
+		$.ajax({
+            url: "data.php",
+            //force to handle it as text
+            dataType: "text",
+			beforeSend: function() { $.mobile.loading('show'); }, //Show spinner
+            complete: function() { $.mobile.loading('hide'); }, //Hide spinner
+            success: function(data) {
+            	 //alert(data);
+				 
+				$( "#dApplicants" ).empty().append('<li data-role="list-divider">Applicant List</li>');
+				 
+                var json = $.parseJSON(data);
+                //now json variable contains data in json format                        
+				var count = 0;
+				
+				$(json).each(function() {					
+				
+				  var li = $( '<li data-icon="carat-r" swatch="c">' );
+				  var a = $( "<a/>" );
+				  //a.attr("href",this.datalink + '?r=' + getRandomInt(10,10000));
+				  a.attr("href",'#');
+				  a.attr("onclick",'showdetails('+this.id+');return false;');
+				  a.html('<span>'+this.fname+' '+this.lname+'</span><span class="ui-li-count ui-btn-up-b ui-btn-corner-all ui-body-inherit">'+((this.approved==='Y') ? 'Approved' : 'Not Approved')+'</span>');
+				  li.append(a);
+				  
+				  $( "#dApplicants" ).append(li);
+				});
+				
+				$('#dApplicants').listview( "refresh" );					
+				
+				//$('#dApplicants li a').click(function(){return false;});
+				
+				//$('#mainpage').trigger('create');
+				
+            },
+           	error: function(x, t, m) {
+		        if(t==="timeout") {
+		            setTimeout(function(){alert("err:timeout");},1000);
+		        } else {
+		        	alert(x+' '+t+' '+m);
+		            // setTimeout(function(){alert('err:'+t);},1000);
+		        }
+    		}
+        });
+
+
+}
+
+var resend = function(){
+
+	if($('input[name="radApp"]:checked').val()==='Y'){
+		$.mobile.changePage("#pageupload", { transition: "slide",role: "page" });
+	}else{
+		alert('not approved');
+	}
+	
+	
+}
+var showdetails = function(d){
+		updateflag = false;
+		$.ajax({
+			method: "POST",
+            url: "data.php",
+			data: { o: d , direct: 'no' },
+            dataType: "text",
+			beforeSend: function() { $.mobile.loading('show'); }, //Show spinner
+            complete: function() { $.mobile.loading('hide'); }, //Hide spinner
+            success: function(data) {
+            	 //alert(data);
+				 //return false;
+				 
+				try{
+					var json = $.parseJSON(data);
+					                //now json variable contains data in json format                        
+					var count = 0;
+					
+					$(json).each(function() {					
+					applicant_id=this.applicant_id;					
+					
+					$('#applicant_name').text(this.fname+' '+this.lname);
+					$('#applicant_passport').text(this.idno);
+					$('#applicant_course').text(this.prefered_course);
+					$('#applicant_cost').text('MYR '+this.fee);
+										
+					$('#fnama').val(this.fname);
+					$('#lnama').val(this.lname);
+					$('#age').val(this.age);
+					$('#nationality').val(this.nationality);
+					$('#occupation').val(this.occupation);
+					$('#add1').val(this.add1);
+					$('#add2').val(this.add2);
+					$('#zip').val(this.zip);
+					$('#city').val(this.city);
+					$('#state').val(this.state);
+					$('#mobile').val(this.mobile);
+					$('#email').val(this.email);
+					$('#country').val(this.country);
+					$('#passport').val(this.idno);
+					
+					$('#eng_proficiency').val(this.eng_proficiency);
+					$('#edu_level').val(this.edu_level);
+					$('#prefered_course').val(this.prefered_course);
+					
+					var d =  new Date(this.join_date);
+					
+					$('#applicant_joindate').text(moment(this.join_date,"YYYY-MM-DD").format('Do MMMM YYYY'));
+					
+					$('#Field18-1').val(('0' + d.getDate()).slice(-2));
+					$('#Field18-2').val(('0' + (d.getMonth()+1)).slice(-2));
+					$('#Field18').val(d.getFullYear());
+					
+					if(this.gender==='F'){					
+						$('input:radio[name="radGender"]').filter('[value="F"]').parent().find("label[for].ui-btn").click()
+					}else{							
+						$('input:radio[name="radGender"]').filter('[value="M"]').parent().find("label[for].ui-btn").click()
+					}
+					
+					if(this.approved==='Y'){					
+						$('input:radio[name="radApp"]').filter('[value="Y"]').parent().find("label[for].ui-btn").click()
+					}else{							
+						$('input:radio[name="radApp"]').filter('[value="N"]').parent().find("label[for].ui-btn").click()
+					}
+					
+					});
+					
+					//$.mobile.changePage("#pagedetail", { transition: "slide",role: "page" });
+					$.mobile.changePage("#pageupload", { transition: "slide",role: "page" });	
+					resetFile();
+										
+				}catch(err){
+					applicant_id=0;
+					payment_data='';
+					//alert(data);
+					invalid('Application isn\'t available!',false);
+				}	
+
+            },
+           	error: function(x, t, m) {
+		        if(t==="timeout") {
+		            setTimeout(function(){alert("err:timeout");},1000);
+		        } else {
+		        	alert(x+' '+t+' '+m);
+		            // setTimeout(function(){alert('err:'+t);},1000);
+		        }
+    		}
+        });
+}
+
+var setAttachment = function(){
+	updateflag = true;
+			
+			if(payment_data===''){invalid('Please attach payment proof.',false);return false;};
+			
+			try{
+			var durl = 'attach.php';
+			
+			var posto = { id:applicant_id, data:payment_data};
+						
+			//alert(JSON.stringify(posto));			
+			//return false;
+			
+			$.ajax({
+			method: "POST",
+            url: durl,
+			data: posto,
+            dataType: "text",
+			beforeSend: function() { $.mobile.loading('show'); }, //Show spinner
+            complete: function() { $.mobile.loading('hide'); }, //Hide spinner
+            success: function(data) {
+            	 
+				//$('#display').html(data);
+				//alert(data);
+				$.mobile.changePage("#pagesuccess", { transition: "slide",role: "page",reverse:false  });
+				
+            },
+           	error: function(x, t, m) {
+		        if(t==="timeout") {
+		            setTimeout(function(){$('#display').html("err:timeout");},1000);
+		        } else {
+		        	//$('#display').html(x+' '+t+' '+m);		            
+					alert(x+' '+t+' '+m);
+		        }
+    		}
+        });
+	
+		}catch(err){
+			alert(err.message);
+		}
+	
+}
+
+var goback = function(){
+	//if(updateflag){getlist()};
+	$.mobile.changePage("#pagelogin", { transition: "slide",role: "page",reverse:true  });
+}
+var check = function(){
+	applicant_id=0;payment_data='';
+	if($("#uid").val()){
+		showdetails($("#uid").val());
+	}else{
+		invalid('Application isn\'t exists!',false);
+	}
+}
+
+var logout = function(){
+	$.mobile.changePage("#pagelogin", { transition: "slide",role: "page",reverse:true});	
+}
+
+var OK1= function(){$('#fOKdialog').dialog( 'close');return false;};
+var OK2= function(){
+								$.mobile.changePage("#customerpage", { transition: "slidedown",role: "page" });
+								return false;
+								};
+function invalid(smsg,x){
+		var icon = '';//'<i class="fa fa-exclamation-triangle fa-1x"></i>&nbsp;';
+		$('#fOKdialog p').css('display','block').html(icon+smsg);
+		$.mobile.changePage("#fOKdialog", { transition: "slidedown",role: "dialog" });
+				
+		switch(x)
+		{
+			case true:
+				$('#fOKdialog button').unbind('click');
+				$('#fOKdialog button').click(OK2);
+				break;
+			case false:
+				$('#fOKdialog button').unbind('click');
+				$('#fOKdialog button').click(OK1);
+				break;
+			default:
+				$('#fOKdialog button').unbind('click');
+				//$('#fOKdialog button').click(function(){navfunc('#'+x);$.mobile.changePage("#"+x, { transition: "slidedown",role: "page" });return false;});				
+		}
+
+}
+
+var readImage = function(input){
+	try{
+	
+		 if (input.files && input.files[0]) {
+				
+			if (input.files[0].size > 2000000) /* or maybe .size */
+            {
+                invalid("Attached file size must be less than 2MB!",false);
+				resetFile();
+                return false;
+            }else{
+				var FR= new FileReader();
+				FR.onload = function(e) {
+			
+				payment_data = e.target.result;
+			
+				//$('#img').attr( "src", payment_data );
+				//$('#base').text(payment_data);
+				
+				//alert(payment_data);
+			 
+				};       
+				FR.readAsDataURL( input.files[0] );
+			}
+				
+
+		}
+	}catch(err){
+		alert(err.message);
+		//invalid('Application isn\'t available!',false);
+	}	
+   
+}
+
+var resetFile = function(){
+	$('#fileupload').val(''); 
+}
+
+    </script>
+        
+<title>Payment Attachment</title>
+<!-- <title>Check your Servers</title> -->
+  </head>
+  <body>
+  <div data-role="page" id="pagelogin" data-theme="c">
+    <div data-role="header">
+    <h1>Payment Attachment</h1>
+  </div>
+  <div data-role="main" class="ui-content" >   
+  <div style="text-align:center;"><img src="../assets/tourifix.png" width="200px"></img></div>
+			<form>
+		            <ul data-role="listview" data-inset="true" data-theme="c" style="display:block;">
+					<li data-role="list-divider">Please provide your valid identification used for registration.</li>
+					 <li class="ui-hide-label"><label for="uid">Email or Passport ID:</label><input name="uid" id="uid" value="" type="text" placeholder="Email or Passport ID"></li>
+					 <!-- <li class="ui-hide-label"><label for="pwd">Password:</label><input name="pwd" id="pwd" value="" type="password" placeholder="Password"></li> -->
+					 <li class="ui-grid-a"><div class="ui-block-a"><input value="Proceed" type="submit" onclick="check();return false;" data-theme="a"></div><div class="ui-block-b"><input value="Cancel" type="reset"></div></li>					 
+					</ul>					
+			</form>
+</div>
+
+    <div data-role="footer" data-position="fixed">
+    <h1 style="visibility:visible">
+    	&copy; 2016 Tourifix	
+	</h1>
+  </div>
+  </div>
+  
+    <div data-role="page" id="pageupload" data-theme="c">
+    <div data-role="header">
+    <h1>Payment Attachment</h1>
+	<a href="#" class="ui-btn ui-btn-left ui-corner-all ui-icon-back ui-btn-icon-notext" onclick="goback();return false;">Back</a>
+  </div>
+  <div data-role="main" class="ui-content" >   
+  <div style="text-align:center;"><img src="../assets/tourifix.png" width="200px"></img></div>
+			<form>
+		            <ul data-role="listview" data-inset="true" data-theme="c" style="display:block;">
+					<li data-role="list-divider">Payment Attachment Form</li>
+					<li>
+						Applicant Name: <strong><span id="applicant_name"></span></strong><br />
+						Passport ID: <strong><span id="applicant_passport"></span></strong><br />
+						Prefered Course: <strong><span id="applicant_course"></span></strong><br />
+						Expected Date: <strong><span id="applicant_joindate"></span></strong><br />
+						Program Cost: <strong><span id="applicant_cost"></span></strong>
+						</li>
+					<li data-role="list-divider">Please attach proof of payment:</li>
+					 <li><input type='file' id="fileupload" /></li>
+					 <li class="ui-grid-a"><div class="ui-block-a"><input value="Proceed" type="submit" onclick="setAttachment();return false;" data-theme="a"></div><div class="ui-block-b"><input onclick="goback();return false;" value="Cancel" type="reset"></div></li>					 
+					</ul>		
+
+
+<!-- <img id="img" src="" /><div id="base"></div> -->
+					
+			</form>
+</div>
+
+    <div data-role="footer" data-position="fixed">
+    <h1 style="visibility:visible">
+    	&copy; 2016 Tourifix	
+	</h1>
+  </div>
+  </div>
+  
+  <div data-role="page" id="pageone" data-theme="a">
+  
+   <div data-role="panel" id="revealPanel" data-display="reveal"> 
+    <h2>Settings</h2>
+	 <form>	 
+	 <div class="ui-field-contain" style="display:none;">	  
+	  <p>Ping Interval (Minute):</p>
+      <!-- <label for="points">Ping Interval (Minute):</label> -->
+      <input type="range" name="points" id="points" value="15" min="5" max="60" data-highlight="true">
+<!-- 	<label for="flip-2">Switch:</label>
+    <select name="flip-2" id="flip-2" data-role="slider" data-track-theme="a" data-theme="a">
+        <option value="off">Off</option>
+        <option value="on">On</option>
+    </select> -->
+	 </div>
+      <!-- <input type="submit" data-inline="true" value="Submit"> -->
+    </form>
+    <!-- <p>You can close the panel by clicking outside the panel, pressing the Esc key, by swiping, or by clicking the button below:</p> -->
+	<p />
+    <a id="saveConfig" href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-check ui-btn-icon-left">Done</a>
+  </div> 
+  
+  <div data-role="header" data-position="fixed">
+    <h1>Sample</h1>
+	 <a href="#revealPanel" class="ui-btn ui-btn-left ui-corner-all ui-icon-gear ui-btn-icon-notext">Settings</a>
+	 <a href="#" data-theme="a" onclick="logout();return false;"><i class="fa fa-sign-out fa-fw" style="color:gray"></i> Logout</a>	
+  </div>
+
+  <div data-role="main" class="ui-content" >    
+		            <ul id="dApplicants" data-role="listview" data-inset="true" data-theme="c" style="display:block;">
+					 <li><a href="acura.html" >Acura</a></li>
+					 <li><a href="acura.html" >Acura</a></li>
+					</ul>
+	<p><span id="display"></span></p>
+
+<!-- STUDENT -->
+	
+
+
+
+  </div>
+
+  <div data-role="footer" data-position="fixed">
+    <h1 style="visibility:visible">
+    	&copy; 2016 Tourifix	
+	</h1>
+  </div>
+</div> 
+
+  <div data-role="page" id="pagedetail" data-theme="c">
+    <div data-role="header" data-position="fixed">
+    <h1>Applicant Details</h1>
+	<a href="#" class="ui-btn ui-btn-left ui-corner-all ui-icon-back ui-btn-icon-notext" onclick="goback();return false;">Back</a>
+  </div>
+  <div data-role="main" class="ui-content" >   
+  <div style="text-align:center;"><img src="../assets/tourifix.png" width="200px"></img></div>
+		
+<ul data-role="listview" data-inset="true" data-theme="c" style="display:block;">
+	<li data-role="list-divider">Application Registration Details</li>
+ 	<li class="ui-grid-a" >
+	
+	<div class="ui-block-a"><label for="nama">First Name:</label><input name="fnama" id="fnama" value="" type="text" placeholder="First Name"></div><div class="ui-block-b"><label for="lnama">Last Name:</label><input name="lnama" id="lnama" value="" type="text" placeholder="Last Name"></div>
+	
+	</li>
+	<li><label for="passport">Passport ID:</label><input name="passport" id="passport" value="" type="text" placeholder="Passport ID" ></li>
+	<li><label for="prefered_course">Course Preference:</label><input name="prefered_course" id="prefered_course" value="" type="text" placeholder="Course Preference" ></li>
+<li class="ui-grid-c">
+<label class="desc" id="title18" for="Field18">Expect date to join the courses</label>
+	<div class="ui-block-a">
+		<input id="Field18-1" 			name="Field18-1" 			type="text" 			class="field text" 			value="" 			size="2" 			maxlength="2" 			tabindex="4" 						onkeyup="handleInput(this);" 			onchange="handleInput(this);" 					placeholder="DD"	      			/>
+		<!-- <label for="Field18-1">DD</label> -->
+	</div>
+	<!-- <span class="symbol">/</span> -->
+	<div class="ui-block-b">
+		<input id="Field18-2" 			name="Field18-2" 			type="text" 			class="field text" 			value="" 			size="2" 			maxlength="2" 			tabindex="5" 						onkeyup="handleInput(this);" 			onchange="handleInput(this);" 		placeholder="MM"							/>
+		<!-- <label for="Field18-2">MM</label> -->
+	</div>
+	<!-- <span class="symbol">/</span> -->
+	<div class="ui-block-c">
+	 	<input id="Field18" 			name="Field18" 			type="text" 			class="field text" 			value="" 			size="4" 			maxlength="4" 			tabindex="6" 						onkeyup="handleInput(this);" 			onchange="handleInput(this);" 		placeholder="YYYY"							/>
+		<!-- <label for="Field18">YYYY</label> -->
+	</div>
+	<div class="ui-block-d" id="cal18">	
+	<!-- <button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-calendar ui-btn-icon-notext" data-mini="true">calendar</button> -->
+	</div>
+</li>
+<li><label for="eng_proficiency">English Proficiency:</label><input name="eng_proficiency" id="eng_proficiency" value="" type="text" placeholder="English Proficiency" ></li>
+
+<li><label for="edu_level">Education Level:</label><input name="edu_level" id="edu_level" value="" type="text" placeholder="Education Level" ></li>
+ 	<li><fieldset data-role="controlgroup" data-type="horizontal">
+        <legend>Gender:</legend>
+        <input name="radGender" id="radGenderM" value="M" type="radio">
+        <label for="radGenderM">Male</label>
+        <input name="radGender" id="radGenderF" value="F" type="radio">
+        <label for="radGenderF">Female</label>
+    </fieldset></li>
+    <li><label for="age">Age:</label><input name="age" id="age" value="" type="text" placeholder="Age"></li>
+    <li><label for="nationality">Nationality:</label><input name="nationality" id="nationality" value="" type="text" placeholder="Nationality"></li>
+    <li><label for="occupation">Occupation:</label><input name="occupation" id="occupation" value="" type="text" placeholder="Occupation" ></li>
+    <li><label for="add1">Contact Address 1:</label><input name="add1" id="add1" value="" type="text" placeholder="Contact Address 1" ></li>
+	<li><label for="add2">Contact Address 2:</label><input name="add2" id="add2" value="" type="text" placeholder="Contact Address 2" ></li>
+	<li><label for="city">City:</label><input name="city" id="city" value="" type="text" placeholder="City" ></li>
+	<li><label for="state">State / Province / Region:</label><input name="state" id="state" value="" type="text" placeholder="State / Province / Region" ></li>
+	<li><label for="zip">Postal / Zip Code:</label><input name="zip" id="zip" value="" type="text" placeholder="Postal / Zip Code" ></li>
+	<li><label for="zip">Country:</label><input name="country" id="country" value="" type="text" placeholder="Country" ></li>
+	
+    <li><label for="mobile">Mobile Phone:</label><input name="mobile" id="mobile" value="" type="text" placeholder="Mobile Phone" ></li>
+    <li><label for="email">Email:</label><input name="email" id="email" value="" type="text" placeholder="Email" ></li>
+
+ 	<li><fieldset data-role="controlgroup" data-type="horizontal">
+        <legend>Approval:</legend>
+        <input name="radApp" id="radAppY" value="Y" type="radio">
+        <label for="radAppY">Approved</label>
+        <input name="radApp" id="radAppN" value="N" type="radio">
+        <label for="radAppN">Not Approved</label>
+    </fieldset></li>
+	<li data-role="list-divider">Please proceed if your registration details are correct.</li>
+	<!-- <li><a href="#" onclick="setapproval();return false;" >Update Status</a></li> -->
+	<li class="ui-grid-a"><div class="ui-block-a"><input value="Proceed" type="submit" onclick="resend();return false;" data-theme="a"></div><div class="ui-block-b"><input value="Cancel" type="reset" onclick="goback();return false;"></div></li>					 
+</ul>
+
+<!-- OFFICE USE -->
+
+<ul data-role="listview" data-inset="true" data-theme="b" style="display:none;">
+	<li data-role="list-divider">Office</li>
+ 	<li class="ui-hide-label"><label for="nama">Staff Name:</label><input name="nama" id="nama" value="" type="text" placeholder="Staff Name"></li>
+
+    <li class="ui-hide-label"><label for="age">Receipt No:</label><input name="age" id="age" value="" type="text" placeholder="Receipt No"></li>
+    <li class="ui-hide-label"><label for="nationality">Date:</label><input data-role="date" name="nationality" id="nationality" value="" type="text" placeholder="Date"></li>    
+    <li><fieldset class="ui-grid-solo">		
+		<div class="ui-block-a"><button id="breset" type="submit" data-theme="a">Reset</button></div>		
+    </fieldset></li>
+	<li><a href="acura.html" onclick="return false;" >Submit</a></li>
+</ul>
+
+
+  </div>
+
+  <div data-role="footer" data-position="fixed">
+    <h1 style="visibility:visible">
+    	&copy; 2016 Tourifix
+	</h1>
+  </div>
+</div> 
+  
+		
+
+		
+</div>
+
+  </div>
+
+    <div data-role="page" id="pagesuccess" data-theme="c">
+    <div data-role="header">
+    <h1>Payment Attachment Success</h1>
+  </div>
+  <div data-role="main" class="ui-content" >   
+  <div style="text-align:center;"><img src="../assets/tourifix.png" width="200px"></img></div>
+			<form>
+		            <ul data-role="listview" data-inset="true" data-theme="c" style="display:block;">
+					<li data-role="list-divider">Your proof of payment attachment successfully saved.</li>
+					 <li>You will be contacted by our representative shortly.</li>					 
+					</ul>					
+			</form>
+</div>
+
+    <div data-role="footer" data-position="fixed">
+    <h1 style="visibility:visible">
+    	&copy; 2016 Tourifix	
+	</h1>
+  </div>
+  </div>
+  
+  
+  		<div data-role="page" data-theme="a" id="fOKdialog">
+			<div data-role="header" data-position="inline">
+				<h1>Notification</h1>								
+			</div>
+			<div data-role="content" data-theme="a">				
+
+				<form action="#" method="get">
+
+					<p style="display:none">This page contains various progressive-enhancement driven form controls. Native elements are sometimes hidden from view, but their values are maintained so the form can be submitted normally. Browsers that don't support the custom controls will still deliver a usable experience because all are based on native form elements.</p>
+
+					<div class="ui-body ui-body-a">
+						<fieldset class="ui-grid-solo">
+							<div class="ui-block-a"><button id="#" type="submit" data-theme="d">OK</button></div>							
+					    </fieldset>						
+					</div>
+
+				</form>
+
+			</div>
+		</div>	
+  
+<div data-role="dialog" id="serverDialog" data-overlay-theme="a" class="my-dialog">
+<!-- <div data-role="header">
+<h2>Dialog</h2>
+</div> -->
+<div role="main" class="ui-content">
+<p>
+<label for="text-basic">Input server ip or domain:</label>
+<input name="text-server" id="text-server" value="" type="text">
+<a href="#" data-role="button" data-icon="plus" onclick="AddServer($('input#text-server').val());$('#serverDialog').dialog('close');">Add Server</a>
+</p>
+</div>
+</div>	
+  </body>
+</html>

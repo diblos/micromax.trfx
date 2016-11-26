@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+  </head>
+  <body>
+    <a href="#" onclick="test2();return false;">this is a test!</a>
+	<span id="display"></span>
+  </body>
+  <script>
+  var test = function(){
+  var d = new Date();
+  var dstr = d.getFullYear()+'-'+('0' + (d.getMonth()+1)).slice(-2)+'-'+('0' + d.getDate()).slice(-2);  
+  $('#display').html(dstr);
+  }
+  var test2 = function(){	
+			var d = new Date();
+			var dstr = d.getFullYear()+'-'+('0' + (d.getMonth()+1)).slice(-2)+'-'+('0' + d.getDate()).slice(-2);
+	
+			$.ajax({
+			method: "POST",
+            url: "index.php",
+			data: { o:'new', fname: 'John', lname:'Doe', age:21, nationality:'Malaysia', occupation:'Despatch', add1:'No 31', add2:'Taman Sri Sinar', zip:'72100', city:'Kuala Lumpur', state:'Wilayah Persekutuan', mobile:'0143327033', email:'john@gmail.com', country:'Malaysia', eng_proficiency:'Weak grammar', edu_level:'High School (Form 4-6)', prefered_course:'INTENSIVE ENGLISH', join_date:dstr, gender:'M', approved:'N'},
+            dataType: "text",
+            success: function(data) {
+            	 
+				$('#display').html(data);
+				
+            },
+           	error: function(x, t, m) {
+		        if(t==="timeout") {
+		            setTimeout(function(){$('#display').html("err:timeout");},1000);
+		        } else {
+		        	$('#display').html(x+' '+t+' '+m);		            
+		        }
+    		}
+        });
+	
+	
+  }
+  </script>
+</html>
