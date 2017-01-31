@@ -2,6 +2,9 @@
 Thumbs.db
 ehthumbs.db
 
+# config file
+db.php
+
 # Folder config file
 Desktop.ini
 
