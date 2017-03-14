@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="assets/favicon.ico">
+
+    <title>SAMPLE</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/carousel.css" rel="stylesheet">
+<!-- 	<link href="//vjs.zencdn.net/4.9.0/video-js.css" rel="stylesheet">
+	<script src="//vjs.zencdn.net/4.9.0/video.js"></script>
+ -->	<link href="assets/css/style.css" rel="stylesheet">
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+
+    <?php
+    include('nav.php');
+    ?>
+
+<!--   <div class="jumbotron">
+      <div class="container">
+ -->
+<div class="container marketing"><div id="card-title-div-img" class="row"><div class="col-md-12">
+
+<?php
+ini_set('error_reporting', E_ERROR);
+$packageid=urldecode($_REQUEST["p"]);
+
+$data = array("u" => "ByStates.json", "f" => "SELECT_PKG", "p" => $packageid);
+$data_string = json_encode($data);
+
+$ch = curl_init(ROOT.'inc/data.php');
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'Content-Length: ' . strlen($data_string))
+);
+
+$result = curl_exec($ch);
+$json = json_decode($result,true);
+
+//echo $result;
+//echo count($json);
+//var_dump($json);
+//foreach($json AS $my) echo("$my->PackageDesc".PHP_EOL);
+
+echo $json->PackageID;
+
+// echo ('<img width="100%" class="img-rounded" src="files/bigstock_Tourist.jpg" alt="First slide">');
+echo ('<img class="img-rounded" width="100%" src="img.php?f='.urlencode($json->PackageDetails->images[0]->imageURL).'&w=900&p=true" alt="'.$json->PackageDetails->images[0]->imageCaption.'">');
+?>
+</div></div>
+<div id="card-title-div" class="row"><div class="col-md-9">
+<?php
+echo ('<h2>'.$json->PackageDesc.'</h2>');
+echo ('<p>'.$json->PackageDetails->overview.'</p>');
+
+// foreach($json->Packages AS $mydata)
+// {
+//   $count=$count+1;
+
+// echo ('<div class="row featurette">');
+// if($count & 1){
+//   $str1 ='<div class="col-md-7">';
+//   $str2 ='<div class="col-md-5">';
+// }else{
+//   $str1 ='<div class="col-md-7 col-md-push-5">';
+//   $str2 ='<div class="col-md-5 col-md-pull-7">';
+// }
+// echo ($str1);
+// echo ('<h3 class="featurette-heading">'.strtotitle($mydata->PackageDesc).'</h3>');
+// echo ('<p class="lead">'.$mydata->PackageDetails->overview.'</p>');
+// echo ('</div>');
+// echo ($str2);
+// echo ('<a href="card.php?p='.$mydata->PackageID.'"><img class="featurette-image img-responsive center-block img-rounded" src="files/restaurants_images_62.jpg" alt="Generic placeholder image"></a>');
+// echo ('</div>');
+// echo ('</div>');
+// echo ('<hr class="featurette-divider">');
+
+// }
+?>
+
+<!--       </div>
+    </div> -->
+</div>
+<div class="col-md-3">
+<?php
+include('check-avail.php');
+ ?>
+</div>
+</div>
+</div>
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div id="img-grid" class="container marketing">
+      <!-- START THE FEATURETTES -->
+<!-- 	  	<h2 class="m_featurette"><span class="glyphicon glyphicon-fire"></span> Highlights</h2>
+      <hr class="featurette-divider">
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2> -->
+<div class="row">
+<div class="col-md-3"><img class="img-rounded" style="width:100%;" title="IMG_9114" src="img.php?f=<?php echo(urlencode('http://farm9.staticflickr.com/8850/28694203511_086bfe5863_m.jpg')) ?>&w=400&h=270&p=false" /></div>
+<div class="col-md-3"><img class="img-rounded" style="width:100%;" title="IMG_9122" src="img.php?f=<?php echo(urlencode('http://farm9.staticflickr.com/8698/28156250913_a03f8aa79e_m.jpg')) ?>&w=400&h=270&p=false" /></div>
+<div class="col-md-3"><img class="img-rounded" style="width:100%;" title="IMG_9131" src="img.php?f=<?php echo(urlencode('http://farm9.staticflickr.com/8632/28694202001_1fd3e05cff_m.jpg')) ?>&w=400&h=270&p=false" /></div>
+<div class="col-md-3"><img class="img-rounded" style="width:100%;" title="IMG_9135" src="img.php?f=<?php echo(urlencode('http://farm9.staticflickr.com/8143/28156247853_ac25e7b4fb_m.jpg')) ?>&w=400&h=270&p=false" /></div>
+</div>
+
+<div class="row">
+<div class="col-md-3"><img class="img-rounded" width="100%" title="IMG_9136" src="img.php?f=<?php echo(urlencode('http://farm8.staticflickr.com/7755/28694200191_e86b70cce0_m.jpg')) ?>&w=400&h=270&p=false" /></div>
+<div class="col-md-3"><img class="img-rounded" width="100%" title="IMG_9140" src="img.php?f=<?php echo(urlencode('http://farm9.staticflickr.com/8736/28156243373_d062145f21_m.jpg')) ?>&w=400&h=270&p=false" /></div>
+<div class="col-md-3"><img class="img-rounded" width="100%" title="IMG_9142" src="img.php?f=<?php echo(urlencode('http://farm9.staticflickr.com/8759/28694197671_6e21fd17e0_m.jpg')) ?>&w=400&h=270&p=false" /></div>
+<div class="col-md-3"><img class="img-rounded" width="100%" title="IMG_9146" src="img.php?f=<?php echo(urlencode('http://farm9.staticflickr.com/8755/28156240843_70e820f5fa_m.jpg')) ?>&w=400&h=270&p=false" /></div>
+
+</div>
+
+<!-- <div class="row">
+<div class="col-md-3"><img class="img-rounded" style="width:100%;" title="Penang, Malaysia" src="img.php?f=<?php echo(urlencode('http://farm9.staticflickr.com/8633/28739656586_deeb783497_m.jpg')) ?>&w=400&h=270&p=false" /></div>
+<div class="col-md-3"><img class="img-rounded" style="width:100%;" title="Along the river in Malacca, Malaysia" src="img.php?f=<?php echo(urlencode('http://farm9.staticflickr.com/8738/27918237563_37d2cb864c_m.jpg')) ?>&w=400&h=270&p=false" /></div>
+<div class="col-md-3"><img class="img-rounded" style="width:100%;" title="Happy Friday! /  Melaka straits mosque, Melaka, Malaysia" src="img.php?f=<?php echo(urlencode('http://farm9.staticflickr.com/8874/28456028711_eff461099d_m.jpg')) ?>&w=400&h=270&p=false" /></div>
+<div class="col-md-3"><img class="img-rounded" style="width:100%;" title="Cool" src="img.php?f=<?php echo(urlencode('http://farm9.staticflickr.com/8643/28692216111_e300231453_m.jpg')) ?>&w=400&h=270&p=false" /></div>
+</div> -->
+
+<!-- <div class="row">
+<div class="col-md-3"><img class="img-rounded" style="width:100%;" title="Sungai Palas Tea Estates, Cameron Highlands, Malaysia" src="img.php?f=<?php echo(urlencode('http://farm9.staticflickr.com/8401/28737003176_12eff18400_m.jpg')) ?>&w=400&h=270&p=false" /></div>
+<div class="col-md-3"><img class="img-rounded" style="width:100%;" title="Sungai Palas Tea Estates, Cameron Highlands, Malaysia" src="img.php?f=<?php echo(urlencode('http://farm9.staticflickr.com/8739/28153470423_0cb6b6daa7_m.jpg')) ?>&w=400&h=270&p=false" /></div>
+<div class="col-md-3"><img class="img-rounded" style="width:100%;" title="Sungai Palas Tea Estates, Cameron Highlands, Malaysia" src="img.php?f=<?php echo(urlencode('http://farm9.staticflickr.com/8387/28736995776_3dccc0ac9a_m.jpg')) ?>&w=400&h=270&p=false" /></div>
+<div class="col-md-3"><img class="img-rounded" style="width:100%;" title="Sungai Palas Tea Estates, Cameron Highlands, Malaysia" src="img.php?f=<?php echo(urlencode('http://farm9.staticflickr.com/8047/28736992216_29921059f4_m.jpg')) ?>&w=400&h=270&p=false" /></div>
+</div>
+
+<div class="row">
+<div class="col-md-3"><img class="img-rounded" style="width:100%;" title="IMG_9152" src="img.php?f=<?php echo(urlencode('http://farm9.staticflickr.com/8817/28694196081_95441edfd7_m.jpg')) ?>&w=400&h=270&p=false" /></div>
+<div class="col-md-3"><img class="img-rounded" style="width:100%;" title="Tanah Rata, Cameron Highlands, Malaysia" src="img.php?f=<?php echo(urlencode('http://farm9.staticflickr.com/8762/28663308132_c8a444c44b_m.jpg')) ?>&w=400&h=270&p=false" /></div>
+<div class="col-md-3"><img class="img-rounded" style="width:100%;" title="Hillview Inn, Tanah Rata, Cameron Highlands, Malaysia" src="img.php?f=<?php echo(urlencode('http://farm9.staticflickr.com/8834/28691427471_645991821d_m.jpg')) ?>&w=400&h=270&p=false" /></div>
+<div class="col-md-3"><img class="img-rounded" style="width:100%;" title="Sungai Palas Tea Estates, Cameron Highlands, Malaysia" src="img.php?f=<?php echo(urlencode('http://farm9.staticflickr.com/8026/28691424091_1eeaaa6857_m.jpg')) ?>&w=400&h=270&p=false" /></div>
+</div> -->
+
+<p></p>
+
+</div><div class="container marketing">
+<!--         </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block img-rounded" src="files/Jigsaw_puzzle_01_by_Scouten.jpg" alt="Generic placeholder image">
+        </div>
+      </div> -->
+
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#home"><span class="glyphicon glyphicon-info-sign"></span> Overview</a></li>
+  <li><a data-toggle="tab" href="#menu1"><span class="glyphicon glyphicon-info-sign"></span> Important Info</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="home" class="tab-pane fade in active">
+    <!-- <h3>Overview</h3> --><p></p>
+<?php
+echo ('<p>'.$json->PackageDetails->overview.'</p>');
+
+    echo ('<h2 class="m_featurette"><span class="glyphicon glyphicon-fire"></span> Highlights</h2>');
+    echo ('<hr class="featurette-divider">');
+    echo ('<div class="row featurette">');
+    echo ('<div class="col-md-12">');
+    foreach($json->PackageDetails->highlights AS $mydata)
+    {
+    echo ('<p>'.$mydata->highlightItem.'</p>');
+    }
+    echo ('</div>');
+    echo ('</div>');
+
+if($json->PackageDetails->why){
+    echo ('<h2 class="m_featurette"><span class="glyphicon glyphicon-question-sign"></span> Why Our Insiders Chose This Tour</h2>');
+    echo ('<hr class="featurette-divider">');
+    echo ('<div class="row featurette">');
+    echo ('<div class="col-md-12">');
+    echo ('<p>'.$json->PackageDetails->why.'</p>');
+    echo ('</div>');
+    echo ('</div>');
+    // echo ('<hr class="featurette-divider">');
+}
+
+if($json->PackageDetails->what){
+    echo ('<h2 class="m_featurette"><span class="glyphicon glyphicon-question-sign"></span> What you can expect</h2>');
+    echo ('<hr class="featurette-divider">');
+    echo ('<div class="row featurette">');
+    echo ('<div class="col-md-12">');
+    foreach($json->PackageDetails->what->Descriptions AS $mydata)
+    {
+    echo ('<p>'.$mydata->DescriptionItem.'</p>');
+    }
+    echo ('</div>');
+    echo ('</div>');
+    // echo ('<hr class="featurette-divider">');
+    echo ('<p />');
+}
+?>
+  </div>
+  <div id="menu1" class="tab-pane fade">
+    <p></p>
+<?php
+
+    // echo ('<h2 class="m_featurette"><span class="glyphicon glyphicon-info-sign"></span> Important Info</h2>');
+    // echo ('<hr class="featurette-divider">');
+    echo ('<div class="row featurette">');
+    echo ('<div class="col-md-12">');
+    echo ('<div class="panel panel-default"><div class="panel-heading">Inclusions:</div>');
+    echo ('<div class="panel-body">');
+    echo ('<ul>');
+    foreach($json->PackageDetails->importantInfo->inclusion AS $mydata)
+    {
+    echo ('<li>'.$mydata->item.'</li>');
+    }
+    echo ('</ul>');
+    echo ('</div></div>');
+    // echo ('<br />');
+    echo ('<div class="panel panel-default"><div class="panel-heading">Exclusions:</div>');
+    echo ('<div class="panel-body">');
+    echo ('<ul>');
+    foreach($json->PackageDetails->importantInfo->exclusion AS $mydata)
+    {
+    echo ('<li>'.$mydata->item.'</li>');
+    }
+    echo ('</ul>');
+    echo ('</div></div>');
+    // echo ('<br />');
+    echo ('<div class="panel panel-default"><div class="panel-heading">Additional Info:</div>');
+    echo ('<div class="panel-body">');
+    echo ('<ul>');
+    foreach($json->PackageDetails->importantInfo->AdditionalInfo AS $mydata)
+    {
+    echo ('<li>'.$mydata->info.'</li>');
+    }
+    echo ('</ul>');
+    echo ('</div></div>');
+    // echo ('<br />');
+if($json->PackageDetails->importantInfo->VoucherInfo){
+    echo ('<div class="panel panel-default"><div class="panel-heading">Voucher info:</div>');
+    echo ('<div class="panel-body">');
+    echo ('<p>'.$json->PackageDetails->importantInfo->VoucherInfo.'</p>');
+    echo ('</div></div>');
+    // echo ('<br />');
+}
+if($json->PackageDetails->importantInfo->OperatorInfo){
+    echo ('<div class="panel panel-default"><div class="panel-heading">Local operator information:</div>');
+    echo ('<div class="panel-body">');
+    echo ('<p>'.$json->PackageDetails->importantInfo->OperatorInfo.'</p>');
+    echo ('</div></div>');
+    // echo ('<br />');
+}
+if($json->PackageDetails->importantInfo->HotelPickup){
+    echo ('<div class="panel panel-default"><div class="panel-heading">Hotel pickup:</div>');
+    echo ('<div class="panel-body">');
+    echo ('<p>'.$json->PackageDetails->importantInfo->HotelPickup.'</p>');
+    echo ('</div></div>');
+    // echo ('<br />');
+}
+if($json->PackageDetails->importantInfo->FAQ){
+
+    echo ('<div class="panel panel-default"><div class="panel-heading">Commonly Asked Questions:</div>');
+    echo ('<div class="panel-body">');
+    foreach($json->PackageDetails->importantInfo->FAQ AS $mydata)
+    {
+    echo ('<p>Q: '.$mydata->question.'<br />A: '.$mydata->answer.'</p>');
+    }
+    echo ('</ul>');
+    echo ('</div></div>');
+    // echo ('<br />');
+}
+    echo ('</div>');
+    echo ('</div>');
+    echo ('<hr class="featurette-divider">');
+
+?>
+  </div>
+</div>
+
+      <!-- <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5">
+          <a href="show.php"><img class="featurette-image img-responsive center-block img-rounded" src="files/restaurants_images_62.jpg" alt="Generic placeholder image"></a>
+        </div>
+      </div>
+
+      <hr class="featurette-divider"> -->
+
+      <!-- /END THE FEATURETTES -->
+
+    </div><!-- /.container -->
+
+      <!-- FOOTER -->
+      <div class="footer-fix1">
+
+      <?php
+      include('footer.php');
+      ?>
+
+      </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="assets/js/vendor/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

@@ -200,30 +200,30 @@ include('nav.php');
 
 <ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#recomend"><span class="glyphicon glyphicon-star"></span> Recomended</a></li>
-  <li><a data-toggle="tab" href="#mine"><span class="glyphicon glyphicon-bookmark"></span> My Items</a></li>  
+  <li><a data-toggle="tab" href="#mine"><span class="glyphicon glyphicon-bookmark"></span> My Items</a></li>
 </ul>
 
 <div class="tab-content" style="background:white;">
   <div id="recomend" class="tab-pane fade in active">
 <!-- ================================================================================================= -->
                             <!-- <div class="row" style="padding:2px 3px 2px 3px;"> -->
-                              
+
                               <div class="col-xs-6">
                               <a href="#" data-toggle="tooltip" title="At the south-western tip of Pulau Payar lies a dive site known as the Coral Garden, considered one of the best marine playgrounds for scuba divers. Get up close to multicoloured fish and soft corals while a professional guide accompanies you into the azure waters of Pulau Payar Marine Park. You\'ll enjoy high visibility as you keep company with a variety of fascinating sea creatures. This full-day excursion for certified divers includes round-trip hotel transport, diving equipment and a buffet lunch."><div class="thumbnail">
-                                    <?php 
+                                    <?php
                                       echo '<img class="img-rounded" src="http://www.tourifix.com/img.php?f='.urlencode('http://kedah.attractionsinmalaysia.com/img/photoState/kedah/PulauPayarMarinePark/1.jpg').'&w=400&h=300&p=false" alt="Generic placeholder image" >';
                                     ?>
                                     <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add</button>
                                 <!-- <div class="caption"> --><div>
                                     Pulau Payar
-                                  <!-- <p><a class="btn btn-primary" href="card.php?p=KDH33" role="button">View details &raquo;</a></p> -->                                  
+                                  <!-- <p><a class="btn btn-primary" href="card.php?p=KDH33" role="button">View details &raquo;</a></p> -->
                                 </div>
                               </div></a>
                               </div>
 
                               <div class="col-xs-6">
                               <a href="#" data-toggle="tooltip" title="Enjoy sweeping views over Kuala Lumpur from the KL Tower Observation Deck. The enclosed deck provides 360-degree views, and your admission ticket includes a multisensory movie experience at the XD Theater. You can also upgrade your ticket to add a stop at the Open Deck, which perches more than 1,000 feet high at the top of the tower."><div class="thumbnail">
-                                    <?php 
+                                    <?php
                                       echo '<img class="img-rounded" src="http://www.tourifix.com/img.php?f='.urlencode('http://images.fanpop.com/images/image_uploads/KL-Tower-malaysia-567872_350_321.jpg').'&w=400&h=300&p=false" alt="Generic placeholder image">';
                                     ?>
                                     <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add</button>
@@ -237,10 +237,10 @@ include('nav.php');
                             <!-- </div> -->
 
                             <!-- <div class="row" style="padding:2px 3px 2px 3px;"> -->
-                              
+
                               <div class="col-xs-6">
                               <a href="#" data-toggle="tooltip" title="Taman Negara is a 130 million years old rainforest that is home to many threatened mammals such as tigers, elephants, tapirs, rhinoceros, and sun bears. It is also home to 14,000 plants and flowers, 300 bird species and 238 freshwater fish species."><div class="thumbnail">
-                                    <?php 
+                                    <?php
                                       echo '<img class="img-rounded" src="http://www.tourifix.com/img.php?f='.urlencode('http://www.chiantiviaggi.it/viaggi-su-misura/dati/viaggi_foto_1_46.jpg').'&w=400&h=300&p=false" alt="Generic placeholder image" >';
                                     ?>
                                     <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add</button>
@@ -253,7 +253,7 @@ include('nav.php');
 
                               <div class="col-xs-6">
                               <a href="#" data-toggle="tooltip" title="Overview Important Info Private transfer from Kuala Lumpur International Airport (KLIA) to Legoland, Johore Bahru at your convenient and comfort. Meet and greet by a professional English speaking driver. Malaysia general information and history will be shared along the ride."><div class="thumbnail">
-                                    <?php 
+                                    <?php
                                       echo '<img class="img-rounded" src="http://www.tourifix.com/img.php?f='.urlencode('http://anekatempatwisata.com/wp-content/uploads/2014/07/Legoland.jpg').'&w=400&h=300&p=false" alt="Generic placeholder image">';
                                     ?>
                                     <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add</button>
@@ -267,10 +267,10 @@ include('nav.php');
                             <!-- </div> -->
 
                             <!-- <div class="row" style="padding:2px 3px 2px 3px;"> -->
-                              
+
                               <div class="col-xs-6">
                               <a href="#" data-toggle="tooltip" title="Chill out on beautiful Pangkor Island, sunning you on the postcard-perfect white sand beaches, or enjoying a jetski ride or snorkeling. This Pangkor Island experience also includes round-trip transport from your hotel, ferry to the island, two nights’ accommodations and meals as per the itinerary."><div class="thumbnail">
-                                    <?php 
+                                    <?php
                                       echo '<img class="img-rounded" src="http://www.tourifix.com/img.php?f='.urlencode('http://gowhere.my/wp-content/uploads/2015/07/Pulau-Pangkor-1-e1436773137878.jpg').'&w=400&h=300&p=false" alt="Generic placeholder image" title="">';
                                     ?>
                                     <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add</button>
@@ -283,7 +283,7 @@ include('nav.php');
 
                               <div class="col-xs-6">
                               <a href="#" data-toggle="tooltip" title="Get an insight into local life on Langkawi Island with this 3-hour tour, including hotel pick-up. Soak up a scenic panorama of lush rice paddies, rubber plantations and rural villages, and discover the island’s rich craft-making heritage at the Atma Alam Batik Art Gallery. After visiting landmarks like Makam Mahsuri (Mahsuri's tomb) and Eagle Square (Dataran Lang), stop at Kuah Town for some duty-free souvenir shopping."><div class="thumbnail">
-                                    <?php 
+                                    <?php
                                       echo '<img class="img-rounded" src="http://www.tourifix.com/img.php?f='.urlencode('http://1.bp.blogspot.com/_48ZUpRNZcdE/SwKAF76BdrI/AAAAAAAAC9Y/8-oxDtirDS0/s1600/P1080162.jpg').'&w=400&h=300&p=false" alt="Generic placeholder image">';
                                     ?>
                                     <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add</button>
@@ -309,7 +309,7 @@ include('nav.php');
 <ul id="tab-days" class="nav nav-tabs">
   <li id="tab-day-1" class="active"><a data-toggle="tab" href="#day-1">Day 1</a></li>
   <li id="tab-day-2" style="display:none;"><a data-toggle="tab" href="#day-2">Day 2</a></li>
-  <li id="tab-day-3" style="display:none;"><a data-toggle="tab" href="#day-3">Day 3</a></li> 
+  <li id="tab-day-3" style="display:none;"><a data-toggle="tab" href="#day-3">Day 3</a></li>
   <li id="tab-day-4" style="display:none;"><a data-toggle="tab" href="#day-4">Day 4</a></li>
   <li id="tab-day-5" style="display:none;"><a data-toggle="tab" href="#day-5">Day 5</a></li>
 </ul>
@@ -341,7 +341,7 @@ include('nav.php');
       </div>
   </div>
 </div>
-                          
+
 <!-- =============================================== -->
                         </div>
                         <div class="col-sm-4">
@@ -374,10 +374,10 @@ include('nav.php');
     <div class="container marketing">
 
       <!-- Three columns of text below the carousel -->
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-lg-4">
           <div class="thumbnail">
-                <?php 
+                <?php
                   echo '<img class="img-rounded" src="http://www.tourifix.com/img.php?f='.urlencode('http://www.chiantiviaggi.it/viaggi-su-misura/dati/viaggi_foto_1_46.jpg').'&w=400&h=300&p=false" alt="Generic placeholder image" >';
                 ?>
             <div class="caption">
@@ -390,7 +390,7 @@ include('nav.php');
 
           <div class="col-lg-4">
           <div class="thumbnail">
-                <?php 
+                <?php
                   echo '<img class="img-rounded" src="http://www.tourifix.com/img.php?f='.urlencode('http://images.fanpop.com/images/image_uploads/KL-Tower-malaysia-567872_350_321.jpg').'&w=400&h=300&p=false" alt="Generic placeholder image">';
                 ?>
             <div class="caption">
@@ -403,7 +403,7 @@ include('nav.php');
 
           <div class="col-lg-4">
           <div class="thumbnail">
-                <?php 
+                <?php
                   echo '<img class="img-rounded" src="http://www.tourifix.com/img.php?f='.urlencode('http://kedah.attractionsinmalaysia.com/img/photoState/kedah/PulauPayarMarinePark/1.jpg').'&w=400&h=300&p=false" alt="Generic placeholder image">';
                 ?>
             <div class="caption">
@@ -413,10 +413,10 @@ include('nav.php');
             </div>
           </div>
         </div>
-      </div>
-
+      </div> -->
 
       <?php
+      include('toppick.php');
       include('destinations.php');
       ?>
 
@@ -464,8 +464,8 @@ include('nav.php');
 
 <!--Dream Holiday Content-->
 <div class="row featurette">
-    
-        
+
+
             <div class="col-md-12">
 <p class="lead">Craft Your Dream Holidays With Tourifix</p>
     Obsessed with the idea of empowering the travelers with best vacation deals, Tourifix is a product of Holiday Tourifix Sdn. Bhd. We are an online market place that connects a traveler to multiple local travel agents. With the help of these 450+ local experts Tourifix has been able to cater to the needs of over 1.5 lakh travelers on international tour holidays as well as domestic Malaysia tours. To provide the best tour and travel experiences, our packages are customizable at the time of booking.</br>
@@ -515,6 +515,8 @@ Book with us and we show you the world like you have never seen before. From adv
       window.location="quote.php";
     });
 
+    var topPick = 1;
+    toggleTopPick(topPick);
 
     $('#recomend').find('button').click(function(event){event.preventDefault();addRecommend($(this).parent())});
 
@@ -524,7 +526,7 @@ Book with us and we show you the world like you have never seen before. From adv
     $('#addon-up').click(function(){toggleDays(1)});
     $('#addon-down').click(function(){toggleDays(-1)});
     function toggleDays(d){
-        var days = ["1 day", "2 days", "3 days","4 days","5 days"]; 
+        var days = ["1 day", "2 days", "3 days","4 days","5 days"];
         var tabs = ["Day 1", "Day 2", "Day 3","Day 4","Day 5"];
         if((DAY+d>=0)&&(DAY+d<days.length)){
           DAY=DAY+d;
@@ -543,6 +545,41 @@ Book with us and we show you the world like you have never seen before. From adv
           }
         }
     }
+
+    // sleep time expects milliseconds
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+
+    function toggleTopPick(x){
+
+        sleep(10000).then(() => {
+
+          console.log(x);
+          switch(x) {
+              case 1:
+                  $('#toppick_r1').show();
+                  $('#toppick_r2').hide();
+                  $('#toppick_r3').hide();
+                  break;
+              case 2:
+                  $('#toppick_r1').hide();
+                  $('#toppick_r2').show();
+                  $('#toppick_r3').hide();
+                  break;
+              default:
+                  $('#toppick_r1').hide();
+                  $('#toppick_r2').hide();
+                  $('#toppick_r3').show();
+          }
+          topPick = topPick + 1;
+          if (topPick == 4){topPick=1;};
+          setInterval(toggleTopPick(topPick), 10000);
+
+        });
+
+    }
+
     function Show(){
         $('#hidden-destinations .panel-body').html($('#select-destination').html());
         $('#hidden-destinations .panel-body h2').each(function(){$( this ).replaceWith( '<h4 style="text-align:left">' + $( this ).html() + '</h4>' );});
@@ -612,7 +649,7 @@ Book with us and we show you the world like you have never seen before. From adv
       //       break;
       //   default:
       //       // default code block
-      // } 
+      // }
     }
     function RemoveItinerary($d){
       // var dtxt = $d.parent().closest( "h4" ).text().trim();
@@ -621,10 +658,10 @@ Book with us and we show you the world like you have never seen before. From adv
       $d.parent().remove();
       $('#recomend').find('a').each(function(){
         // console.log($(this).text().replace('Add','').trim()+"==="+dtxt);
-        // console.log($(this));        
+        // console.log($(this));
         if($(this).text().replace('Add','').trim()===dtxt){$(this).find('.thumbnail').show();return false;}
         // console.log($(this).text().replace('Add','').trim());
-      });      
+      });
     }
 
 function initialize()
@@ -653,10 +690,10 @@ google.maps.event.addDomListener(window, 'load', initialize);
 // });
 
 function initList(){
-  // $('button[title="Edit itinerary"]').click(function(){console.log('Johore');});  
+  // $('button[title="Edit itinerary"]').click(function(){console.log('Johore');});
     popoverOptions = {
         content: function () {
-            // Get the content from the hidden sibling.            
+            // Get the content from the hidden sibling.
             return $(this).parent().siblings('.my-popover-content').html();
         },
         trigger: 'click',
@@ -664,7 +701,7 @@ function initList(){
         placement: 'left',
         html: true
     };
-    $('button[title="Edit itinerary"]').popover(popoverOptions);  
+    $('button[title="Edit itinerary"]').popover(popoverOptions);
 }
     </script>
   </body>

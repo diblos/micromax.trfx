@@ -1,6 +1,6 @@
 <?php
-require_once('inc/configs.php'); 
-require_once('inc/methods.php'); 
+require_once('inc/configs.php');
+require_once('inc/methods.php');
 ?>
 <nav class="navbar navbar-default navbar-fixed-top">
 <!-- <nav class="navbar navbar-inverse navbar-fixed-top"> -->
@@ -28,22 +28,22 @@ require_once('inc/methods.php');
             <li><a href="product4.php">Wildlife</a></li>
             <li><a href="product4.php">Religious</a></li>
             <li><a href="product4.php">Water Activities</a></li> -->
-            
+
 <?php
 
 
-$data = array("u" => "ByStates.json", "f" => "GET_STATES");                                                                    
-$data_string = json_encode($data);                                                                                   
-                                                                                                                     
+$data = array("u" => "ByStates.json", "f" => "GET_STATES");
+$data_string = json_encode($data);
+
 $ch = curl_init(ROOT.'inc/data.php');
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
-curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
-    'Content-Type: application/json',                                                                                
-    'Content-Length: ' . strlen($data_string))                                                                       
-);                                                                                                                   
-                                                                                                                     
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'Content-Length: ' . strlen($data_string))
+);
+
 $result = curl_exec($ch);
 $json =json_decode($result);
 

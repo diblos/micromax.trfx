@@ -51,17 +51,17 @@
 $packageid=urldecode($_REQUEST["p"]);
 
 $data = array("u" => "ByStates.json", "f" => "SELECT_PKG", "p" => $packageid);
-$data_string = json_encode($data);                                                                                   
-                                                                                                                     
-$ch = curl_init(ROOT.'inc/data.php');                                                                      
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
-curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
-    'Content-Type: application/json',                                                                                
-    'Content-Length: ' . strlen($data_string))                                                                       
-);                                                                                                                   
-                                                                                                                     
+$data_string = json_encode($data);
+
+$ch = curl_init(ROOT.'inc/data.php');
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'Content-Length: ' . strlen($data_string))
+);
+
 $result = curl_exec($ch);
 $json =json_decode($result);
 
@@ -98,12 +98,12 @@ echo ('<p>'.$json->PackageDetails->overview.'</p>');
 
 // }
 ?>
-        
+
 <!--       </div>
     </div> -->
 </div>
 <div class="col-md-3">
-<?php 
+<?php
 include('check-avail.php');
  ?>
 </div>
@@ -137,12 +137,12 @@ include('check-avail.php');
 
 </div>
 
-<div class="row">
+<!-- <div class="row">
 <div class="col-md-3"><img class="img-rounded" style="width:100%;" title="Penang, Malaysia" src="img.php?f=<?php echo(urlencode('http://farm9.staticflickr.com/8633/28739656586_deeb783497_m.jpg')) ?>&w=400&h=270&p=false" /></div>
 <div class="col-md-3"><img class="img-rounded" style="width:100%;" title="Along the river in Malacca, Malaysia" src="img.php?f=<?php echo(urlencode('http://farm9.staticflickr.com/8738/27918237563_37d2cb864c_m.jpg')) ?>&w=400&h=270&p=false" /></div>
 <div class="col-md-3"><img class="img-rounded" style="width:100%;" title="Happy Friday! /  Melaka straits mosque, Melaka, Malaysia" src="img.php?f=<?php echo(urlencode('http://farm9.staticflickr.com/8874/28456028711_eff461099d_m.jpg')) ?>&w=400&h=270&p=false" /></div>
 <div class="col-md-3"><img class="img-rounded" style="width:100%;" title="Cool" src="img.php?f=<?php echo(urlencode('http://farm9.staticflickr.com/8643/28692216111_e300231453_m.jpg')) ?>&w=400&h=270&p=false" /></div>
-</div>
+</div> -->
 
 <!-- <div class="row">
 <div class="col-md-3"><img class="img-rounded" style="width:100%;" title="Sungai Palas Tea Estates, Cameron Highlands, Malaysia" src="img.php?f=<?php echo(urlencode('http://farm9.staticflickr.com/8401/28737003176_12eff18400_m.jpg')) ?>&w=400&h=270&p=false" /></div>

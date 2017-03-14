@@ -45,11 +45,11 @@ div#hidden-destinations{display: none;z-index: 999;}
 }
 #navbar-black.navbar-default .navbar-nav>li>a:hover,
 #navbar-black.navbar-default .navbar-nav>li>a:focus,
-#navbar-black.navbar-default .navbar-nav>li>ul>li>a:hover, 
-#navbar-black.navbar-default .navbar-nav>li>ul>li>a:focus, 
+#navbar-black.navbar-default .navbar-nav>li>ul>li>a:hover,
+#navbar-black.navbar-default .navbar-nav>li>ul>li>a:focus,
 #navbar-black.navbar-default .navbar-nav>.active>a,
 #navbar-black.navbar-default .navbar-nav>.active>a:hover,
-#navbar-black.navbar-default .navbar-nav>.active>a:focus {   
+#navbar-black.navbar-default .navbar-nav>.active>a:focus {
     color: rgba(255, 255, 255, 1);
     background-color: rgba(0, 0, 0, 1);
     background: -webkit-linear-gradient(top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 100%);
@@ -59,16 +59,16 @@ div#hidden-destinations{display: none;z-index: 999;}
     background-color: #222222;
 }
 #navbar-black.navbar-default .navbar-toggle {
-    border-color: #222222; 
+    border-color: #222222;
 }
 #navbar-black.navbar-default .navbar-toggle:hover,
 #navbar-black.navbar-default .navbar-toggle:focus {
     background-color: #3C3C3C;
 }
 #navbar-black.navbar-default .navbar-nav>li>a,
-#navbar-black.navbar-default .navbar-nav>li>ul>li>a, 
+#navbar-black.navbar-default .navbar-nav>li>ul>li>a,
 #navbar-black.navbar-default .navbar-brand {
-    color: #999999; 
+    color: #999999;
 }
 #navbar-black.navbar-default .navbar-toggle .icon-bar,
 #navbar-black.navbar-default .navbar-toggle:hover .icon-bar,
@@ -89,11 +89,11 @@ div#hidden-destinations{display: none;z-index: 999;}
 }
 #navbar-red.navbar-default .navbar-nav>li>a:hover,
 #navbar-red.navbar-default .navbar-nav>li>a:focus,
-#navbar-red.navbar-default .navbar-nav>li>ul>li>a:hover, 
-#navbar-red.navbar-default .navbar-nav>li>ul>li>a:focus, 
+#navbar-red.navbar-default .navbar-nav>li>ul>li>a:hover,
+#navbar-red.navbar-default .navbar-nav>li>ul>li>a:focus,
 #navbar-red.navbar-default .navbar-nav>.active>a,
 #navbar-red.navbar-default .navbar-nav>.active>a:hover,
-#navbar-red.navbar-default .navbar-nav>.active>a:focus { 
+#navbar-red.navbar-default .navbar-nav>.active>a:focus {
     color: rgba(51, 51, 51, 1);
     background-color: rgba(255, 255, 255, 1);
     background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
@@ -110,9 +110,9 @@ div#hidden-destinations{display: none;z-index: 999;}
     background-color: #cc0033;
 }
 #navbar-red.navbar-default .navbar-nav>li>a,
-#navbar-red.navbar-default .navbar-nav>li>ul>li>a, 
+#navbar-red.navbar-default .navbar-nav>li>ul>li>a,
 #navbar-red.navbar-default .navbar-brand {
-    color: #999999; 
+    color: #999999;
 }
 #navbar-red.navbar-default .navbar-toggle .icon-bar,
 #navbar-red.navbar-default .navbar-toggle:hover .icon-bar,
@@ -133,11 +133,11 @@ div#hidden-destinations{display: none;z-index: 999;}
 }
 #navbar-darkblue.navbar-default .navbar-nav>li>a:hover,
 #navbar-darkblue.navbar-default .navbar-nav>li>a:focus,
-#navbar-darkblue.navbar-default .navbar-nav>li>ul>li>a:hover, 
-#navbar-darkblue.navbar-default .navbar-nav>li>ul>li>a:focus, 
+#navbar-darkblue.navbar-default .navbar-nav>li>ul>li>a:hover,
+#navbar-darkblue.navbar-default .navbar-nav>li>ul>li>a:focus,
 #navbar-darkblue.navbar-default .navbar-nav>.active>a,
 #navbar-darkblue.navbar-default .navbar-nav>.active>a:hover,
-#navbar-darkblue.navbar-default .navbar-nav>.active>a:focus {  
+#navbar-darkblue.navbar-default .navbar-nav>.active>a:focus {
     color: rgba(51, 51, 51, 1);
     background-color: rgba(255, 255, 255, 1);
     background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
@@ -154,14 +154,14 @@ div#hidden-destinations{display: none;z-index: 999;}
     background-color: #3333cc;
 }
 #navbar-darkblue.navbar-default .navbar-nav>li>a,
-#navbar-darkblue.navbar-default .navbar-nav>li>ul>li>a, 
+#navbar-darkblue.navbar-default .navbar-nav>li>ul>li>a,
 #navbar-darkblue.navbar-default .navbar-brand {
-    color: #999999; 
+    color: #999999;
 }
 #navbar-darkblue.navbar-default .navbar-toggle .icon-bar,
 #navbar-darkblue.navbar-default .navbar-toggle:hover .icon-bar,
 #navbar-darkblue.navbar-default .navbar-toggle:focus .icon-bar {
-    background-color: #ffffff; 
+    background-color: #ffffff;
 }
 
 /*
@@ -177,11 +177,11 @@ div#hidden-destinations{display: none;z-index: 999;}
 }
 #navbar-darkgreen.navbar-default .navbar-nav>li>a:hover,
 #navbar-darkgreen.navbar-default .navbar-nav>li>a:focus,
-#navbar-darkgreen.navbar-default .navbar-nav>li>ul>li>a:hover, 
-#navbar-darkgreen.navbar-default .navbar-nav>li>ul>li>a:focus, 
+#navbar-darkgreen.navbar-default .navbar-nav>li>ul>li>a:hover,
+#navbar-darkgreen.navbar-default .navbar-nav>li>ul>li>a:focus,
 #navbar-darkgreen.navbar-default .navbar-nav>.active>a,
 #navbar-darkgreen.navbar-default .navbar-nav>.active>a:hover,
-#navbar-darkgreen.navbar-default .navbar-nav>.active>a:focus {  
+#navbar-darkgreen.navbar-default .navbar-nav>.active>a:focus {
     color: rgba(51, 51, 51, 1);
     background-color: rgba(255, 255, 255, 1);
     background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
@@ -198,14 +198,14 @@ div#hidden-destinations{display: none;z-index: 999;}
     background-color: #009933;
 }
 #navbar-darkgreen.navbar-default .navbar-nav>li>a,
-#navbar-darkgreen.navbar-default .navbar-nav>li>ul>li>a, 
+#navbar-darkgreen.navbar-default .navbar-nav>li>ul>li>a,
 #navbar-darkgreen.navbar-default .navbar-brand {
-    color: #999999; 
+    color: #999999;
 }
 #navbar-darkgreen.navbar-default .navbar-toggle .icon-bar,
 #navbar-darkgreen.navbar-default .navbar-toggle:hover .icon-bar,
 #navbar-darkgreen.navbar-default .navbar-toggle:focus .icon-bar {
-    background-color: #ffffff; 
+    background-color: #ffffff;
 }
 
 /*
@@ -221,11 +221,11 @@ div#hidden-destinations{display: none;z-index: 999;}
 }
 #navbar-yellow.navbar-default .navbar-nav>li>a:hover,
 #navbar-yellow.navbar-default .navbar-nav>li>a:focus,
-#navbar-yellow.navbar-default .navbar-nav>li>ul>li>a:hover, 
-#navbar-yellow.navbar-default .navbar-nav>li>ul>li>a:focus, 
+#navbar-yellow.navbar-default .navbar-nav>li>ul>li>a:hover,
+#navbar-yellow.navbar-default .navbar-nav>li>ul>li>a:focus,
 #navbar-yellow.navbar-default .navbar-nav>.active>a,
 #navbar-yellow.navbar-default .navbar-nav>.active>a:hover,
-#navbar-yellow.navbar-default .navbar-nav>.active>a:focus {  
+#navbar-yellow.navbar-default .navbar-nav>.active>a:focus {
     color: rgba(51, 51, 51, 1);
     background-color: rgba(255, 255, 255, 1);
     background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
@@ -242,14 +242,14 @@ div#hidden-destinations{display: none;z-index: 999;}
     background-color: #ccff00;
 }
 #navbar-yellow.navbar-default .navbar-nav>li>a,
-#navbar-yellow.navbar-default .navbar-nav>li>ul>li>a, 
+#navbar-yellow.navbar-default .navbar-nav>li>ul>li>a,
 #navbar-yellow.navbar-default .navbar-brand {
-    color: #999999; 
+    color: #999999;
 }
 #navbar-yellow.navbar-default .navbar-toggle .icon-bar,
 #navbar-yellow.navbar-default .navbar-toggle:hover .icon-bar,
 #navbar-yellow.navbar-default .navbar-toggle:focus .icon-bar {
-    background-color: #ffffff; 
+    background-color: #ffffff;
 }
 /*NAVBAR END*/
 
@@ -302,7 +302,7 @@ div#hidden-destinations{display: none;z-index: 999;}
   padding: 8px 0px 0px 19px;
   height: 43px;
   margin: 4px 2px 4px 4px;
-} 
+}
 	#btnLogin {
 	border-radius: 14px;
 	/*border: 2px solid #777777;*/
@@ -413,6 +413,10 @@ div#recomend a:hover .thumbnail button,div#mine a:hover .thumbnail button{visibi
 div#tab-days a button{display: none;}
 div#tab-days a:hover button{display: block;}
 
+div#toppick_r1{display:none;}
+div#toppick_r2{display:none;}
+div#toppick_r3{display:none;}
+
 .my-popover-content {
     display:none;
 }
@@ -434,9 +438,9 @@ div#recomend a .thumbnail button,div#mine a .thumbnail button{position:relative;
 #btnRegister {width:93px;}
 p.btn-right{float:right;}
 p.btn-left{float:left;}
-.footer-fix1{margin-bottom:-60px;position:relative !important;width:100%;bottom:0;} 
+.footer-fix1{margin-bottom:-60px;position:relative !important;width:100%;bottom:0;}
 .footer-fix2{margin-bottom:-60px;position:absolute !important;width:100%;bottom:0;}
-.the-foot p.dabout{margin-bottom:47px;} 
+.the-foot p.dabout{margin-bottom:47px;}
 div#index-search-form{position:absolute;top:120px;left:5%;width:90%;}
 div#recomend a .thumbnail button,div#mine a .thumbnail button{position:relative;top:-70px !important;left:25%;}
 }

@@ -3,9 +3,11 @@
 // header("Content-type: text/plain; charset=utf-8");
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST");
+ini_set('error_reporting', E_ERROR);
 
 $_POST = json_decode(file_get_contents('php://input'), true);
 $url=urldecode($_POST["u"]);
+
 $fungsi=$_POST["f"];
 $stateid=$_POST["s"];
 $packageid=$_POST["p"];
@@ -30,9 +32,13 @@ switch ($fungsi) {
         $json =json_decode($contents);
         SELECT_PKG($json,$packageid);
         break;
+    case 'SELECT_RND';
+        $json =json_decode($contents);
+        GET_RND($json);
+        break;
     default:
         print_r($contents);
-} 
+}
 
 function GET_STATES($obj){
  foreach($obj AS $mydata)
@@ -61,8 +67,20 @@ function SELECT_PKG($obj,$sid){
             $pakej=$mypakej;
             break;
           }
-      }         
+      }
     }
     print_r(json_encode($pakej));
+}
+
+function GET_RND($obj){
+ $r = new stdClass();
+ $arr_pkg = array();
+ foreach($obj AS $mydata)
+    {
+        foreach($mydata->Packages AS $mymy) array_push($arr_pkg,$mymy);
+    }
+    $r->count = count($arr_pkg);
+    $r->data = $arr_pkg;
+    print_r(json_encode($r));
 }
 ?>

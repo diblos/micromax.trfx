@@ -94,20 +94,22 @@
 $stateid=urldecode($_REQUEST["s"]);
 
 $data = array("u" => "ByStates.json", "f" => "SELECT_STATE", "s" => $stateid);
-$data_string = json_encode($data);                                                                                   
-                                                                                                                     
-$ch = curl_init(ROOT.'inc/data.php');                                                                      
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
-curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
-    'Content-Type: application/json',                                                                                
-    'Content-Length: ' . strlen($data_string))                                                                       
-);                                                                                                                   
-                                                                                                                     
+$data_string = json_encode($data);
+
+$ch = curl_init(ROOT.'inc/data.php');
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'Content-Length: ' . strlen($data_string))
+);
+
 $result = curl_exec($ch);
 $json =json_decode($result);
 $count = 0;
+
+
 
 echo ('<h1 class="statetitle">'.$json->StateName.'</h1>');
 echo ('<hr class="featurette-divider">');

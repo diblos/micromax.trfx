@@ -5,4 +5,4 @@ define("ROOT", "http://localhost/lh/mgt/tourifix/", true);
 
 // define("GAPI", "AIzaSyDQWGfCRtB62-opCrl9bEkcSzb6EBfspHI", true); /* tourifix *?
 define("GAPI", "AIzaSyC9OHZD-ddcvoNu1UxV4i5fEEK7AkhbIUA", true);
-?> 
+?>
